@@ -4,11 +4,11 @@ https://github.com/rrthomas/gnat
 
 by Reuben Thomas <rrt@sc3d.org>  
 
-Gnat is an experimental Forth-derived language. It is released purely in the
-hope that it might be interesting or useful to someone.
+Gnat is an experimental language. It is released purely in the hope that it
+might be interesting or useful to someone.
 
-Gnat comes pre-compiled for Bee (`src/bee/gnat-32.bin` and
-`src/bee/gnat-64.bin`).
+Gnat comes pre-compiled for the [Bee VM](https://github.com/rrthomas/bee)
+(`src/bee/gnat-32.bin` and `src/bee/gnat-64.bin`).
 
 
 ## Copyright and Disclaimer
