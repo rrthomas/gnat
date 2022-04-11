@@ -1304,7 +1304,7 @@ FALSE VALUE INTERACT?
    THEN
    (QUIT) ;
 
-: START   ( here -- )
+: START
    \ Assume that we were called by a call instruction at 'FORTH, and
    \ use our return address to calculate the new value of 'FORTH.
    R> CELL-  TO 'FORTH
