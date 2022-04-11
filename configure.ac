@@ -12,9 +12,6 @@ AC_INIT(Gnat, 0.82, rrt@sc3d.org)
 AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([-Wall foreign])
 
-dnl Check for programs
-AC_PROG_LN_S
-
 dnl Check for Bee and its binutils
 AC_PROG_GREP
 AC_PATH_PROG([BEE], [bee])
