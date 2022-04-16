@@ -384,6 +384,9 @@ INCLUDE" fileio.fs"
 INCLUDE" terminal.fs"   \ terminal I/O words
 
 
+INCLUDE" glib.fs"
+
+
 \ Interpreter #2
 
 : ABORT   -1 THROW ;
