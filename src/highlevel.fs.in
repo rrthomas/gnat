@@ -372,7 +372,7 @@ VARIABLE CREATED   \ Indicate whether last word was CREATEd
 : C0END   ( c-addr1 u1 c-addr2 u2 -- )   1- ROT MIN  2DUP + >R
    MOVE  0 R> C! ;
 \ FIXME: caller should allocate buffer!
-: SCRATCH-C0END   ( c-addr1 u1 -- HERE )   SCRATCH 256 C0END  SCRATCH ;
+: SCRATCH-C0END   ( c-addr1 u1 -- SCRATCH )   SCRATCH 256 C0END  SCRATCH ;
 : ",   ( c-addr u -- )   DUP C,  2DUP .STRING   HERE SWAP  DUP RAW-ALLOT  CMOVE ;
 
 : (C")   R>  DUP C@ 1+ CHARS OVER + ALIGNED  >R ;
