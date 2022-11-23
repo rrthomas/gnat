@@ -1,6 +1,6 @@
 \ Bee assembler for Gnat
 \
-\ (c) Reuben Thomas 2020
+\ (c) Reuben Thomas 2020-2022
 \
 \ The package is distributed under the GNU GPL version 3, or, at your
 \ option, any later version.
@@ -46,30 +46,36 @@ INCLUDE" opcodes.fs"
       21 OF C" store2" ENDOF
       22 OF C" load4" ENDOF
       23 OF C" store4" ENDOF
-      24 OF C" neg" ENDOF
-      25 OF C" add" ENDOF
-      26 OF C" mul" ENDOF
-      27 OF C" divmod" ENDOF
-      28 OF C" udivmod" ENDOF
-      29 OF C" eq" ENDOF
-      30 OF C" lt" ENDOF
-      31 OF C" ult" ENDOF
-      32 OF C" pushs" ENDOF
-      33 OF C" pops" ENDOF
-      34 OF C" dups" ENDOF
-      35 OF C" catch" ENDOF
-      36 OF C" throw" ENDOF
-      37 OF C" break" ENDOF
-      38 OF C" word_bytes" ENDOF
-      39 OF C" get_m0" ENDOF
-      40 OF C" get_msize" ENDOF
-      41 OF C" get_ssize" ENDOF
-      42 OF C" get_sp" ENDOF
-      43 OF C" set_sp" ENDOF
-      44 OF C" get_dsize" ENDOF
-      45 OF C" get_dp" ENDOF
-      46 OF C" set_dp" ENDOF
-      47 OF C" get_handler_sp" ENDOF
+      24 OF C" load_ia" ENDOF
+      25 OF C" store_db" ENDOF
+      26 OF C" load_ib" ENDOF
+      27 OF C" store_da" ENDOF
+      28 OF C" load_da" ENDOF
+      29 OF C" store_ib" ENDOF
+      30 OF C" load_db" ENDOF
+      31 OF C" store_ia" ENDOF
+      32 OF C" neg" ENDOF
+      33 OF C" add" ENDOF
+      34 OF C" mul" ENDOF
+      35 OF C" divmod" ENDOF
+      36 OF C" udivmod" ENDOF
+      37 OF C" eq" ENDOF
+      38 OF C" lt" ENDOF
+      39 OF C" ult" ENDOF
+      40 OF C" pushs" ENDOF
+      41 OF C" pops" ENDOF
+      42 OF C" dups" ENDOF
+      43 OF C" catch" ENDOF
+      44 OF C" throw" ENDOF
+      45 OF C" break" ENDOF
+      46 OF C" word_bytes" ENDOF
+      49 OF C" get_ssize" ENDOF
+      50 OF C" get_sp" ENDOF
+      51 OF C" set_sp" ENDOF
+      52 OF C" get_dsize" ENDOF
+      53 OF C" get_dp" ENDOF
+      54 OF C" set_dp" ENDOF
+      55 OF C" get_handler_sp" ENDOF
       >R  0  R>
    ENDCASE ;
 
@@ -139,9 +145,10 @@ INCLUDE" opcodes.fs"
  7  0 INSTS BNOP     BNOT     BAND     BOR      BXOR     BLSHIFT  BRSHIFT  BARSHIFT
 15  8 INSTS BPOP     BDUP     BSET     BSWAP    BJUMP    BJUMPZ   BCALL    BRET
 23 16 INSTS BLOAD    BSTORE   BLOAD1   BSTORE1  BLOAD2   BSTORE2  BLOAD4   BSTORE4
-31 24 INSTS BNEG     BADD     BMUL     BDIVMOD  BUDIVMOD BEQ      BLT      BULT
-38 32 INSTS BPUSHR   BPOPR    BDUPR    BCATCH   BTHROW   BBREAK   BWORD_BYTES
-47 41 INSTS BGET_SSIZE BGET_SP BSET_SP BGET_DSIZE BGET_DP BSET_DP BGET_HANDLER_SP
+31 24 INSTS BLOAD_IA BSTORE_DB BLOAD_IB BSTORE_DA BLOAD_DA BSTORE_IB BLOAD_DB BSTORE_IA
+39 32 INSTS BNEG     BADD     BMUL     BDIVMOD  BUDIVMOD BEQ      BLT      BULT
+46 40 INSTS BPUSHR   BPOPR    BDUPR    BCATCH   BTHROW   BBREAK   BWORD_BYTES
+55 49 INSTS BGET_SSIZE BGET_SP BSET_SP BGET_DSIZE BGET_DP BSET_DP BGET_HANDLER_SP
 
 0 TRAP LIBC
 1 TRAP GLIB
