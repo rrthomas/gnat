@@ -111,7 +111,7 @@ INCLUDE" opcodes.fs"
             #INSTRUCTIONS OVER >  SWAP OPCODE>NAME  TUCK AND IF
                COUNT TYPE
             ELSE
-               DROP ." ; invalid instruction!"
+               DROP ." # invalid instruction!"
             THEN
          ENDOF
       ENDCASE
