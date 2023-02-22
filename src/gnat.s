@@ -11779,25 +11779,10 @@ calli _28_S_22__29_
 ret
 .set VERSION_info, 0 | 0 | 0 | (7 <<_name_length_bits) | 0x0 
 .balign bee_word_bytes
-.byte 0x9 
-.ascii "\"PLATFORM"
-.balign bee_word_bytes, 0x20 
-.word VERSION - .
-.word _22_PLATFORM_compilation
-.word _22_PLATFORM_info 
-.global _22_PLATFORM
-_22_PLATFORM:
-calli _28_S_22__29_
-.byte 0x3 
-.ascii "Bee"
-.balign bee_word_bytes, 0x0 
-ret
-.set _22_PLATFORM_info, 0 | 0 | 0 | (9 <<_name_length_bits) | 0x0 
-.balign bee_word_bytes
 .byte 0x4 
 .ascii "HELP"
 .balign bee_word_bytes, 0x20 
-.word _22_PLATFORM - .
+.word VERSION - .
 .word HELP_compilation
 .word HELP_info 
 .global HELP
@@ -11886,22 +11871,10 @@ calli _28_S_22__29_
 calli TYPE
 calli VERSION
 calli TYPE
-calli _28_S_22__29_
-.byte 0xC 
-.ascii " (platform: "
-.balign bee_word_bytes, 0x0 
-calli TYPE
-calli _22_PLATFORM
-calli TYPE
-calli _28_S_22__29_
-.byte 0x1 
-.ascii ")"
-.balign bee_word_bytes, 0x0 
-calli TYPE
 calli CR
 calli _28_S_22__29_
 .byte 0x1B 
-.ascii "(c) Reuben Thomas 1991-2022"
+.ascii "(c) Reuben Thomas 1991-2023"
 .balign bee_word_bytes, 0x0 
 calli TYPE
 calli CR
@@ -11934,28 +11907,28 @@ INTERACT_3F__body:
 DO_2D_START_2D_OPTIONS:
 calli ARGC
 load
-jumpzi .L9905f
+jumpzi .L9888f
 calli HERE
 calli _22_PROGRAM_2D_NAME
 calli REL_21_
 calli NEXT_2D_ARG
 calli _22__2C_
-.L9905f:
+.L9888f:
 calli ARGC
 load
-jumpzi .L9913f
-.L9914b:
+jumpzi .L9896f
+.L9897b:
 calli NEXT_2D_ARG
 pushi 1 # 0x1 
 dup
-jumpzi .L9917f
+jumpzi .L9900f
 pushi 1 # 0x1 
 dup
 load1
 pushi 45 
 eq
 neg
-jumpzi .L9924f
+jumpzi .L9907f
 calli _28_S_22__29_
 .byte 0x6 
 .ascii "--help"
@@ -11963,12 +11936,12 @@ calli _28_S_22__29_
 calli _32_OVER
 calli COMPARE
 calli _30__3D_
-jumpzi .L9930f
+jumpzi .L9913f
 calli _32_DROP
 calli HELP
 calli BYE
-jumpi .L9934f
-.L9930f:
+jumpi .L9917f
+.L9913f:
 calli _28_S_22__29_
 .byte 0x9 
 .ascii "--version"
@@ -11976,12 +11949,12 @@ calli _28_S_22__29_
 calli _32_OVER
 calli COMPARE
 calli _30__3D_
-jumpzi .L9941f
+jumpzi .L9924f
 calli _32_DROP
 calli BANNER
 calli BYE
-jumpi .L9945f
-.L9941f:
+jumpi .L9928f
+.L9924f:
 calli _28_S_22__29_
 .byte 0xA 
 .ascii "--evaluate"
@@ -11989,12 +11962,12 @@ calli _28_S_22__29_
 calli _32_OVER
 calli COMPARE
 calli _30__3D_
-jumpzi .L9952f
+jumpzi .L9935f
 calli _32_DROP
 calli NEXT_2D_ARG
 calli EVALUATE
-jumpi .L9956f
-.L9952f:
+jumpi .L9939f
+.L9935f:
 calli _28_S_22__29_
 .byte 0xA 
 .ascii "--interact"
@@ -12002,13 +11975,13 @@ calli _28_S_22__29_
 calli _32_OVER
 calli COMPARE
 calli _30__3D_
-jumpzi .L9963f
+jumpzi .L9946f
 calli _32_DROP
 calli TRUE
 pushreli INTERACT_3F__body
 store
-jumpi .L9968f
-.L9963f:
+jumpi .L9951f
+.L9946f:
 calli HERE
 calli _27_THROWN
 store
@@ -12016,26 +11989,26 @@ calli _22__2C_
 pushi -512 
 calli THROW
 calli _32_DROP
-.L9968f:
-.L9956f:
-.L9945f:
-.L9934f:
-jumpi .L9976f
-.L9924f:
-calli INCLUDED
-.L9976f:
-jumpi .L9914b
+.L9951f:
+.L9939f:
+.L9928f:
 .L9917f:
+jumpi .L9959f
+.L9907f:
+calli INCLUDED
+.L9959f:
+jumpi .L9897b
+.L9900f:
 calli _32_DROP
 calli INTERACT_3F_
 not
-jumpzi .L9982f
+jumpzi .L9965f
 calli BYE
-.L9982f:
-jumpi .L9984f
-.L9913f:
+.L9965f:
+jumpi .L9967f
+.L9896f:
 calli BANNER
-.L9984f:
+.L9967f:
 calli _28_QUIT_29_
 ret
 .set DO_2D_START_2D_OPTIONS_info, 0 | 0 | 0 | (16 <<_name_length_bits) | 0x0 

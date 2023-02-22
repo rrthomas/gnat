@@ -1,6 +1,6 @@
 # Source Makefile.am
 #
-# (c) Reuben Thomas 2018-2022
+# (c) Reuben Thomas 2018-2023
 #
 # The package is distributed under the GNU GPL version 3, or, at your
 # option, any later version.
@@ -20,7 +20,7 @@ BUILD_GNAT = $(BEE) $(abs_top_srcdir)/src/gnat-$(bee_word_bits).bin
 
 host_SRCS = $(portable_SRCS) \
 	assembler.fs compiler-asm.fs extra-primitives.fs fileio.fs		\
-	opcodes.fs platform.fs primitives.fs system-params.fs terminal.fs
+	opcodes.fs primitives.fs system-params.fs terminal.fs
 
 ETAGS_ARGS = --language forth $(portable_SRCS) $(host_SRCS) highlevel.fs.in
 

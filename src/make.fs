@@ -1,6 +1,6 @@
 \ Metacompile Gnat base image
 \
-\ (c) Reuben Thomas 1996-2020
+\ (c) Reuben Thomas 1996-2023
 \
 \ The package is distributed under the GNU GPL version 3, or, at your
 \ option, any later version.
@@ -14,8 +14,7 @@
 \ ' HALT-HANDLER 'THROW!
 
 DEPTH VALUE INITIAL-DEPTH   \ Note initial stack depth
-INCLUDE" platform.fs"
-CR .( Metacompiling Gnat for ) "PLATFORM TYPE .( : )
+CR .( Metacompiling Gnat: )
 
 
 INCLUDE" assembler.fs"
