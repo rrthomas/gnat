@@ -71,9 +71,6 @@ STDERR-FILENO TO ASMOUT
 .ASM[ .set _name_length_bits, bee_word_bits - _byte_bits]
 INCLUDE" primitives.fs"
 INCLUDE" system-params.fs"
-[UNDEFINED] MINIMAL-PRIMITIVES [IF]
-   INCLUDE" extra-primitives.fs"
-[THEN]
 
 INCLUDE" highlevel.fs"
 

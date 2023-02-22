@@ -90,9 +90,109 @@ ret
 .set CELL_info, 0 | 0 | 0 | (4 <<_name_length_bits) | 0x10000 
 .balign bee_word_bytes
 .byte 0x3 
-.ascii "SP@"
+.ascii "DUP"
 .balign bee_word_bytes, 0x20 
 .word CELL - .
+.word DUP_compilation
+.word DUP_info 
+.global DUP
+DUP:
+pushi 0x0 
+dup
+ret
+.balign bee_word_bytes
+.set DUP_inline, 2
+.set DUP_info, 0 | 0 | 0 | (3 <<_name_length_bits) | 0x20000 
+.balign bee_word_bytes
+.byte 0x4 
+.ascii "SWAP"
+.balign bee_word_bytes, 0x20 
+.word DUP - .
+.word SWAP_compilation
+.word SWAP_info 
+.global SWAP
+SWAP:
+pushi 0x0 
+swap
+ret
+.balign bee_word_bytes
+.set SWAP_inline, 2
+.set SWAP_info, 0 | 0 | 0 | (4 <<_name_length_bits) | 0x20000 
+.balign bee_word_bytes
+.byte 0x4 
+.ascii "OVER"
+.balign bee_word_bytes, 0x20 
+.word SWAP - .
+.word OVER_compilation
+.word OVER_info 
+.global OVER
+OVER:
+pushi 0x1 
+dup
+ret
+.balign bee_word_bytes
+.set OVER_inline, 2
+.set OVER_info, 0 | 0 | 0 | (4 <<_name_length_bits) | 0x20000 
+.balign bee_word_bytes
+.byte 0x3 
+.ascii "ROT"
+.balign bee_word_bytes, 0x20 
+.word OVER - .
+.word ROT_compilation
+.word ROT_info 
+.global ROT
+ROT:
+pushi 0x0 
+swap
+pushi 0x1 
+swap
+ret
+.balign bee_word_bytes
+.set ROT_inline, 4
+.set ROT_info, 0 | 0 | 0 | (3 <<_name_length_bits) | 0x40000 
+.balign bee_word_bytes
+.byte 0x4 
+.ascii "-ROT"
+.balign bee_word_bytes, 0x20 
+.word ROT - .
+.word _2D_ROT_compilation
+.word _2D_ROT_info 
+.global _2D_ROT
+_2D_ROT:
+pushi 0x1 
+swap
+pushi 0x0 
+swap
+ret
+.balign bee_word_bytes
+.set _2D_ROT_inline, 4
+.set _2D_ROT_info, 0 | 0 | 0 | (4 <<_name_length_bits) | 0x40000 
+.balign bee_word_bytes
+.byte 0x5 
+.ascii "2SWAP"
+.balign bee_word_bytes, 0x20 
+.word _2D_ROT - .
+.word _32_SWAP_compilation
+.word _32_SWAP_info 
+.global _32_SWAP
+_32_SWAP:
+pushi 0x1 
+swap
+pushi 0x0 
+swap
+pushi 0x2 
+swap
+pushi 0x0 
+swap
+ret
+.balign bee_word_bytes
+.set _32_SWAP_inline, 8
+.set _32_SWAP_info, 0 | 0 | 0 | (5 <<_name_length_bits) | 0x80000 
+.balign bee_word_bytes
+.byte 0x3 
+.ascii "SP@"
+.balign bee_word_bytes, 0x20 
+.word _32_SWAP - .
 .word SP_40__compilation
 .word SP_40__info 
 .global SP_40_
@@ -433,10 +533,69 @@ ret
 .set RSHIFT_inline, 1
 .set RSHIFT_info, 0 | 0 | 0 | (6 <<_name_length_bits) | 0x10000 
 .balign bee_word_bytes
+.byte 0x1 
+.ascii "-"
+.balign bee_word_bytes, 0x20 
+.word RSHIFT - .
+.word _2D__compilation
+.word _2D__info 
+.global _2D_
+_2D_:
+neg
+add
+ret
+.balign bee_word_bytes
+.set _2D__inline, 2
+.set _2D__info, 0 | 0 | 0 | (1 <<_name_length_bits) | 0x20000 
+.balign bee_word_bytes
+.byte 0x2 
+.ascii "1+"
+.balign bee_word_bytes, 0x20 
+.word _2D_ - .
+.word _31__2B__compilation
+.word _31__2B__info 
+.global _31__2B_
+_31__2B_:
+not
+neg
+ret
+.balign bee_word_bytes
+.set _31__2B__inline, 2
+.set _31__2B__info, 0 | 0 | 0 | (2 <<_name_length_bits) | 0x20000 
+.balign bee_word_bytes
+.byte 0x2 
+.ascii "1-"
+.balign bee_word_bytes, 0x20 
+.word _31__2B_ - .
+.word _31__2D__compilation
+.word _31__2D__info 
+.global _31__2D_
+_31__2D_:
+neg
+not
+ret
+.balign bee_word_bytes
+.set _31__2D__inline, 2
+.set _31__2D__info, 0 | 0 | 0 | (2 <<_name_length_bits) | 0x20000 
+.balign bee_word_bytes
+.byte 0x7 
+.ascii "ARSHIFT"
+.balign bee_word_bytes, 0x20 
+.word _31__2D_ - .
+.word ARSHIFT_compilation
+.word ARSHIFT_info 
+.global ARSHIFT
+ARSHIFT:
+arshift
+ret
+.balign bee_word_bytes
+.set ARSHIFT_inline, 1
+.set ARSHIFT_info, 0 | 0 | 0 | (7 <<_name_length_bits) | 0x10000 
+.balign bee_word_bytes
 .byte 0x4 
 .ascii "EXIT"
 .balign bee_word_bytes, 0x20 
-.word RSHIFT - .
+.word ARSHIFT - .
 .word EXIT_compilation
 .word EXIT_info 
 .global EXIT
@@ -525,169 +684,10 @@ pushi 4096
 ret
 .set RETURN_2D_STACK_2D_CELLS_info, 0 | 0 | 0 | (18 <<_name_length_bits) | 0x0 
 .balign bee_word_bytes
-.byte 0x3 
-.ascii "DUP"
-.balign bee_word_bytes, 0x20 
-.word RETURN_2D_STACK_2D_CELLS - .
-.word DUP_compilation
-.word DUP_info 
-.global DUP
-DUP:
-pushi 0x0 
-dup
-ret
-.balign bee_word_bytes
-.set DUP_inline, 2
-.set DUP_info, 0 | 0 | 0 | (3 <<_name_length_bits) | 0x20000 
-.balign bee_word_bytes
-.byte 0x4 
-.ascii "SWAP"
-.balign bee_word_bytes, 0x20 
-.word DUP - .
-.word SWAP_compilation
-.word SWAP_info 
-.global SWAP
-SWAP:
-pushi 0x0 
-swap
-ret
-.balign bee_word_bytes
-.set SWAP_inline, 2
-.set SWAP_info, 0 | 0 | 0 | (4 <<_name_length_bits) | 0x20000 
-.balign bee_word_bytes
-.byte 0x4 
-.ascii "OVER"
-.balign bee_word_bytes, 0x20 
-.word SWAP - .
-.word OVER_compilation
-.word OVER_info 
-.global OVER
-OVER:
-pushi 0x1 
-dup
-ret
-.balign bee_word_bytes
-.set OVER_inline, 2
-.set OVER_info, 0 | 0 | 0 | (4 <<_name_length_bits) | 0x20000 
-.balign bee_word_bytes
-.byte 0x3 
-.ascii "ROT"
-.balign bee_word_bytes, 0x20 
-.word OVER - .
-.word ROT_compilation
-.word ROT_info 
-.global ROT
-ROT:
-pushi 0x0 
-swap
-pushi 0x1 
-swap
-ret
-.balign bee_word_bytes
-.set ROT_inline, 4
-.set ROT_info, 0 | 0 | 0 | (3 <<_name_length_bits) | 0x40000 
-.balign bee_word_bytes
-.byte 0x4 
-.ascii "-ROT"
-.balign bee_word_bytes, 0x20 
-.word ROT - .
-.word _2D_ROT_compilation
-.word _2D_ROT_info 
-.global _2D_ROT
-_2D_ROT:
-pushi 0x1 
-swap
-pushi 0x0 
-swap
-ret
-.balign bee_word_bytes
-.set _2D_ROT_inline, 4
-.set _2D_ROT_info, 0 | 0 | 0 | (4 <<_name_length_bits) | 0x40000 
-.balign bee_word_bytes
-.byte 0x5 
-.ascii "2SWAP"
-.balign bee_word_bytes, 0x20 
-.word _2D_ROT - .
-.word _32_SWAP_compilation
-.word _32_SWAP_info 
-.global _32_SWAP
-_32_SWAP:
-pushi 0x1 
-swap
-pushi 0x0 
-swap
-pushi 0x2 
-swap
-pushi 0x0 
-swap
-ret
-.balign bee_word_bytes
-.set _32_SWAP_inline, 8
-.set _32_SWAP_info, 0 | 0 | 0 | (5 <<_name_length_bits) | 0x80000 
-.balign bee_word_bytes
-.byte 0x1 
-.ascii "-"
-.balign bee_word_bytes, 0x20 
-.word _32_SWAP - .
-.word _2D__compilation
-.word _2D__info 
-.global _2D_
-_2D_:
-neg
-add
-ret
-.balign bee_word_bytes
-.set _2D__inline, 2
-.set _2D__info, 0 | 0 | 0 | (1 <<_name_length_bits) | 0x20000 
-.balign bee_word_bytes
-.byte 0x2 
-.ascii "1+"
-.balign bee_word_bytes, 0x20 
-.word _2D_ - .
-.word _31__2B__compilation
-.word _31__2B__info 
-.global _31__2B_
-_31__2B_:
-not
-neg
-ret
-.balign bee_word_bytes
-.set _31__2B__inline, 2
-.set _31__2B__info, 0 | 0 | 0 | (2 <<_name_length_bits) | 0x20000 
-.balign bee_word_bytes
-.byte 0x2 
-.ascii "1-"
-.balign bee_word_bytes, 0x20 
-.word _31__2B_ - .
-.word _31__2D__compilation
-.word _31__2D__info 
-.global _31__2D_
-_31__2D_:
-neg
-not
-ret
-.balign bee_word_bytes
-.set _31__2D__inline, 2
-.set _31__2D__info, 0 | 0 | 0 | (2 <<_name_length_bits) | 0x20000 
-.balign bee_word_bytes
-.byte 0x7 
-.ascii "ARSHIFT"
-.balign bee_word_bytes, 0x20 
-.word _31__2D_ - .
-.word ARSHIFT_compilation
-.word ARSHIFT_info 
-.global ARSHIFT
-ARSHIFT:
-arshift
-ret
-.balign bee_word_bytes
-.set ARSHIFT_inline, 1
-.set ARSHIFT_info, 0 | 0 | 0 | (7 <<_name_length_bits) | 0x10000 
-.balign bee_word_bytes
 .byte 0x6 
 .ascii "'FORTH"
 .balign bee_word_bytes, 0x20 
-.word ARSHIFT - .
+.word RETURN_2D_STACK_2D_CELLS - .
 .word _27_FORTH_compilation
 .word _27_FORTH_info 
 .global _27_FORTH

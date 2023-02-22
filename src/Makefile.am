@@ -19,12 +19,12 @@ portable_SRCS = make.fs
 BUILD_GNAT = $(BEE) $(abs_top_srcdir)/src/gnat-$(bee_word_bits).bin
 
 host_SRCS = $(portable_SRCS) \
-	assembler.fs compiler-asm.fs extra-primitives.fs fileio.fs		\
+	assembler.fs compiler-asm.fs fileio.fs		\
 	opcodes.fs primitives.fs system-params.fs terminal.fs
 
 ETAGS_ARGS = --language forth $(portable_SRCS) $(host_SRCS) highlevel.fs.in
 
-do_build = $(BUILD_GNAT) --evaluate "$$MINIMAL_PRIMITIVES" make.fs
+do_build = $(BUILD_GNAT) make.fs
 
 gnat.s: $(host_SRCS) highlevel.fs
 	$(do_build) 2> $@
